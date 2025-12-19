@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>دفتر ملاحظات (GoodNotes Web)</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">📒 دفتر</div>
+
+    <div class="tools">
+      <button id="penBtn" class="tool active">✏️ قلم</button>
+      <button id="highBtn" class="tool">🟨 هايلايتر</button>
+      <button id="eraserBtn" class="tool">🧽 ممحاة</button>
+
+      <label class="slider">
+        <span>السُمك</span>
+        <input id="size" type="range" min="1" max="30" value="4">
+        <span id="sizeVal">4</span>
+      </label>
+
+      <label class="color">
+        <span>اللون</span>
+        <input id="color" type="color" value="#111111">
+      </label>
+
+      <button id="undoBtn" class="tool">↩️ تراجع</button>
+      <button id="redoBtn" class="tool">↪️ إعادة</button>
+
+      <button id="exportBtn" class="primary">⬇️ تصدير PNG</button>
+      <button id="clearBtn" class="danger">🗑️ مسح الصفحة</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar">
+      <div class="sideHeader">
+        <div>الصفحات</div>
+        <button id="newPageBtn" class="primary small">＋ صفحة</button>
+      </div>
+
+      <div id="pages" class="pages"></div>
+    </aside>
+
+    <section class="paperArea">
+      <div class="paperWrap">
+        <canvas id="canvas" width="900" height="1200"></canvas>
+        <div class="hint">اسحب للكتابة ✍️ (الحفظ تلقائي)</div>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
