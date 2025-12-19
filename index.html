@@ -2,13 +2,16 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <title>دفتر ملاحظات (GoodNotes Web)</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header class="topbar">
-    <div class="brand">📒 دفتر</div>
+    <div class="left">
+      <button id="togglePagesBtn" class="tool ghost">📑 الصفحات</button>
+      <div class="brand">📒 دفتر</div>
+    </div>
 
     <div class="tools">
       <button id="penBtn" class="tool active">✏️ قلم</button>
@@ -26,23 +29,25 @@
         <input id="color" type="color" value="#111111">
       </label>
 
-      <button id="undoBtn" class="tool">↩️ تراجع</button>
-      <button id="redoBtn" class="tool">↪️ إعادة</button>
+      <button id="undoBtn" class="tool">↩️</button>
+      <button id="redoBtn" class="tool">↪️</button>
 
-      <button id="exportBtn" class="primary">⬇️ تصدير PNG</button>
-      <button id="clearBtn" class="danger">🗑️ مسح الصفحة</button>
+      <button id="exportBtn" class="tool">PNG</button>
+      <button id="exportPdfBtn" class="primary">📄 PDF للدفتر</button>
+      <button id="clearBtn" class="danger">🗑️</button>
     </div>
   </header>
 
   <main class="layout">
-    <aside class="sidebar">
+    <aside id="sidebar" class="sidebar">
       <div class="sideHeader">
         <div>الصفحات</div>
         <button id="newPageBtn" class="primary small">＋ صفحة</button>
       </div>
-
       <div id="pages" class="pages"></div>
     </aside>
+
+    <div id="backdrop" class="backdrop"></div>
 
     <section class="paperArea">
       <div class="paperWrap">
@@ -52,6 +57,8 @@
     </section>
   </main>
 
+  <!-- jsPDF (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
