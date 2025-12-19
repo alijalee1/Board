@@ -19,7 +19,7 @@ body{
 }
 
 .topbar{
-  position:sticky; top:0; z-index:10;
+  position:sticky; top:0; z-index:50;
   display:flex; gap:12px; align-items:center; justify-content:space-between;
   padding:10px 12px;
   background:linear-gradient(180deg, rgba(17,26,46,0.95), rgba(17,26,46,0.75));
@@ -27,6 +27,7 @@ body{
   backdrop-filter: blur(10px);
 }
 
+.left{display:flex; gap:10px; align-items:center;}
 .brand{font-weight:800}
 
 .tools{
@@ -44,11 +45,12 @@ body{
   padding:8px 10px;
   border-radius:10px;
   cursor:pointer;
-  font-weight:600;
+  font-weight:700;
 }
 .tool.active{ outline:2px solid rgba(42,99,255,.7); }
 .primary{ background:var(--btn2); border-color: rgba(42,99,255,.8); }
 .danger{ background: rgba(255,59,59,.15); border-color: rgba(255,59,59,.55); }
+.ghost{ background:rgba(27,42,77,.25); }
 
 .small{ padding:6px 10px; border-radius:10px; }
 
@@ -138,4 +140,31 @@ canvas{
   color:var(--muted);
   font-size:13px;
   text-align:center;
+}
+
+/* ===== Mobile ===== */
+.backdrop{
+  display:none;
+  position:fixed; inset:0;
+  background: rgba(0,0,0,.45);
+  z-index:40;
+}
+
+@media (max-width: 900px){
+  .layout{ grid-template-columns: 1fr; }
+  .sidebar{
+    position:fixed;
+    top:58px; bottom:0;
+    right:0;
+    width:min(86vw, 320px);
+    transform: translateX(110%);
+    transition: transform .2s ease;
+    z-index:45;
+    border-left:1px solid var(--line);
+  }
+  .sidebar.open{ transform: translateX(0); }
+  .backdrop.show{ display:block; }
+  .slider input{ width:110px; }
+  .tools .slider span:first-child,
+  .tools .color span:first-child { display:none; } /* اختصار للجوال */
 }
